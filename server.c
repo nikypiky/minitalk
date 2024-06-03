@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "include/minitalk.h"
 
 int	main (void)
 {
-	printf("server\n");
+	write_PID();
 }

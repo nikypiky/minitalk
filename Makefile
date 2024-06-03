@@ -1,27 +1,45 @@
-# Files
-NAME       = client \
-			server
+NAME = libminitalk
 
-# Compiler and Flags
-Compiler   = cc
-CmpFlags   = -Wall -Wextra -Werror -g3
+SRCS_UTILS :=	write_PID \
 
-# Targets
-all: $(NAME) # Build both executables
+SRCS_EXEC  :=	client \
+				server
 
-$(NAME): %: %.c # Pattern rule for building executables
-	@$(Compiler) $(CmpFlags) -o $@ $<
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -g3
+
+OBJS_UTILS  = $(addprefix utils/, $(SRCS_UTILS:=.o))
+OBJS_EXEC   = $(SRCS_EXEC:=.o)
+
+# Include directory for utils
+INC_DIRS    =	-I./utils \
+				-I./include
+
+VPATH       = utils
+
+.PHONY: all clean fclean re run
+
+all: $(NAME).a $(SRCS_EXEC)
+
+$(NAME).a: $(OBJS_UTILS)
+	@ar rcs $@ $^
+
+# Generic rule to compile .c files into .o files
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INC_DIRS) -c $< -o $@
+
+# Rule for executable files
+$(SRCS_EXEC): % : %.o $(NAME).a
+	@$(CC) $(CFLAGS) $< -L. -l:$(NAME).a -o $@
 
 clean:
-	@rm -f *.o
+	@rm -f $(OBJS_UTILS) $(OBJS_EXEC)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME).a $(SRCS_EXEC)
 
 re: fclean all
 
-run: all # Run all executables after building them
+run: all
 	@./client
 	@./server
-
-.PHONY: all, clean, fclean, re, run
