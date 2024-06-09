@@ -8,7 +8,8 @@ int	main (int argc, char **argv)
 	char	test = 'a';
 
 	bit_test = 0b00000001;
-	pid = miniatoi(argv[argc - 1]);
+	pid = miniatoi("47231");
+	printf ("x %i %s %i\n", pid, argv[1], argc);
 	i = 0;
 	// if (argc != 3)
 	// {
@@ -40,13 +41,13 @@ int	main (int argc, char **argv)
 		test = test >> 1;
 		i++;
 	}
-	if (kill(pid, SIGUSR1) == -1)
-	{
-		printf("error %s\n", argv[1]);
-		perror("Error sending signal"); // Prints the error message and reason
-		return 1;
-	}
-    	printf("client %i\n", miniatoi("1234"));
+	// if (kill(pid, SIGUSR1) == -1)
+	// {
+	// 	printf("error %s\n", argv[1]);
+	// 	perror("Error sending signal"); // Prints the error message and reason
+	// 	return 1;
+	// }
+    // 	printf("client %i\n", miniatoi("1234"));
 }
 
 

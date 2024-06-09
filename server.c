@@ -10,4 +10,5 @@ int	main (void)
 	write_PID();
 	pause();
 	signal(SIGUSR1, &test);
+	signal(SIGUSR2, &test);
 }
