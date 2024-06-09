@@ -4,7 +4,8 @@ SRCS_UTILS :=	write_PID \
 				miniatoi
 
 SRCS_EXEC  :=	client \
-				server
+				server \
+				test\
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
