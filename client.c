@@ -7,10 +7,10 @@ int	main (int argc, char **argv)
 	char	bit_test;
 	char	test = 'a';
 
-	bit_test = 0b00000001;
+	bit_test = 0b10000000;
 	pid = miniatoi(argv[1]);
-	printf ("%i %s %i\n", pid, argv[1], argc);
 	i = 0;
+	(void)argc;
 	// if (argc != 3)
 	// {
 	// 	write(1, "Please input server PID and message.\n", 26);
@@ -18,7 +18,7 @@ int	main (int argc, char **argv)
 	// }
 	while (i <= 8)
 	{
-		if ((test & bit_test) != 1)
+		if ((test & bit_test) == 0)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 			{
@@ -34,9 +34,11 @@ int	main (int argc, char **argv)
 				return 1;
 			}
 		}
-		test = test >> 1;
+		test = test << 1;
 		i++;
+		sleep(1);
 	}
+	return (0);
 }
 
 

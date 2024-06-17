@@ -49,6 +49,6 @@ char	*ft_itoa(int n)
 void	write_PID()
 {
 	write(1, "Server PID = ", 13);
-	write(1, ft_itoa(getpid()), 5);
+	write(1, ft_itoa(getpid()), 6);
 	write(1, "\n", 1);
 }
