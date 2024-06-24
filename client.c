@@ -1,43 +1,54 @@
 #include "include/minitalk.h"
 
+int send_char (char c, int pid)
+{
+	int	bit_test;
+	int	j;
+
+	bit_test = 128;
+	j = 0;
+
+	while (j < 8)
+	{
+		if ((c & bit_test) == 0)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		j++;
+		bit_test = bit_test >> 1;
+		sleep(0.1);
+	}
+	return (0);
+}
+
+int send_int (int i, int pid)
+{
+	unsigned int	bit_test;
+	int				j;
+
+	bit_test = 2147483648;
+	j = 0;
+
+	while (j < 32)
+	{
+		if ((i & bit_test) == 0)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		j++;
+		bit_test = bit_test >> 1;
+		sleep(0.1);
+	}
+	return (0);
+}
+
 int	main (int argc, char **argv)
 {
-	int		i;
 	int		pid;
-	char	bit_test;
-	char	test = 'a';
 
-	bit_test = 0b10000000;
 	pid = miniatoi(argv[1]);
-	i = 0;
 	(void)argc;
-	// if (argc != 3)
-	// {
-	// 	write(1, "Please input server PID and message.\n", 26);
-	// 	return(1);
-	// }
-	while (i <= 8)
-	{
-		if ((test & bit_test) == 0)
-		{
-			if (kill(pid, SIGUSR1) == -1)
-			{
-				perror("Error sending signal"); // Prints the error message and reason
-				return 1;
-			}
-		}
-		else
-		{
-			if (kill(pid, SIGUSR2) == -1)
-			{
-				perror("Error sending signal"); // Prints the error message and reason
-				return 1;
-			}
-		}
-		test = test << 1;
-		i++;
-		sleep(1);
-	}
+	send_int(1, pid);
 	return (0);
 }
 

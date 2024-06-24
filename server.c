@@ -5,13 +5,13 @@ t_message	g_message;
 void sigusr1(int signum)
 {
     (void)signum; // Parameter is unused in this handler
-    printf("0\n");
+    write(1, "0", 1);
 }
 
 void sigusr2(int signum)
 {
     (void)signum; // Parameter is unused in this handler
-    printf("1\n");
+    write(1, "1", 1);
 }
 
 int main(void)

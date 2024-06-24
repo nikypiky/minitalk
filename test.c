@@ -4,5 +4,5 @@
 
 int    main ()
  {
-	printf("%i", '~');
+	printf("%li", sizeof(int));
 }

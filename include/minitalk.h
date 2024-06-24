@@ -17,4 +17,6 @@ typedef struct s_message
 	char	*text;
 }	t_message;
 
+# define INT_BIT_TEST 2147483648
+
 #endif
