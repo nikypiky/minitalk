@@ -4,27 +4,24 @@ t_message	g_message;
 
 void sigusr1(int signum)
 {
-    (void)signum; // Parameter is unused in this handler
-    write(1, "0", 1);
+	(void)signum;
+	write_0(&g_message.text[0]);
 }
 
 void sigusr2(int signum)
 {
-    (void)signum; // Parameter is unused in this handler
-    write(1, "1", 1);
+	(void)signum;
+	write_1(&g_message.text[0]);
 }
 
 int main(void)
 {
-	// char	c;
-    write_PID(); // Assuming this writes the process ID to a file
+	write_PID();
 
-    signal(SIGUSR1, sigusr1); // Register handlers BEFORE the loop
-    signal(SIGUSR2, sigusr2);
-
-    while (1)
-    {
-        pause(); // Wait for signals
-    }
-    return 0; // good practice to return 0 in main
+	signal(SIGUSR1, sigusr1);
+	signal(SIGUSR2, sigusr2);
+	g_message.text = malloc(sizeof(char) * 2);
+	while (1)
+		pause();
+	return 0;
 }

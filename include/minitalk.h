@@ -9,6 +9,10 @@
 
 void	write_PID();
 int		miniatoi(char* str);
+int		send_char (char c, int pid);
+int		send_int (int i, int pid);
+void	write_0(char *c);
+void	write_1(char *c);
 
 typedef struct s_message
 {

@@ -1,11 +1,14 @@
 NAME = libminitalk
 
 SRCS_UTILS :=	write_PID \
-				miniatoi
+				miniatoi \
+				send \
+				write
 
 SRCS_EXEC  :=	client \
 				server \
-				test\
+				test \
+
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3
