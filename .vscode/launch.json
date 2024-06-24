@@ -10,7 +10,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/home/nikolas/42-projects/minitalk/client",
-			"args": ["31744", "a"],
+			"args": ["66212", "a"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

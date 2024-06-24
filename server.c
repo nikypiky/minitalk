@@ -5,13 +5,15 @@ t_message	g_message;
 void sigusr1(int signum)
 {
 	(void)signum;
-	write_0(&g_message.text[0]);
+	write_0(&g_message.len);
+	printf("%i\n", g_message.len);
 }
 
 void sigusr2(int signum)
 {
 	(void)signum;
-	write_1(&g_message.text[0]);
+	write_1(&g_message.len);
+	printf("%i\n", g_message.len);
 }
 
 int main(void)
