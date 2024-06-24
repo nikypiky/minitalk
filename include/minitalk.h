@@ -10,4 +10,11 @@
 void	write_PID();
 int		miniatoi(char* str);
 
+typedef struct s_message
+{
+	int		client_PID;
+	int		len;
+	char	*text;
+}	t_message;
+
 #endif
