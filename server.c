@@ -22,8 +22,21 @@ int main(void)
 
 	signal(SIGUSR1, sigusr1);
 	signal(SIGUSR2, sigusr2);
-	g_message.text = malloc(sizeof(char) * 2);
 	while (1)
 		pause();
 	return 0;
 }
+
+// int write_client_PID(int client_PID)
+// {
+// 	signal(SIGUSR1, sigusr1);
+// 	signal(SIGUSR2, sigusr2);
+// 	while (1)
+// 		pause();
+// }
+
+// int main(void)
+// {
+// 	write_PID();
+
+// }
