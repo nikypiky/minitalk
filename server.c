@@ -5,15 +5,15 @@ t_message	g_message;
 void sigusr1(int signum)
 {
 	(void)signum;
-	write_0(&g_message.len);
-	printf(" test1 - %i\n", g_message.len);
+	write_0(g_message.len);
+	printf(" test1 - %c\n", *g_message.len);
 }
 
 void sigusr2(int signum)
 {
 	(void)signum;
-	write_1(&g_message.len);
-	printf(" test2 - %i\n", g_message.len);
+	write_1(g_message.len);
+	printf(" test2 - %c\n", *g_message.len);
 }
 
 int main(void)
@@ -26,17 +26,3 @@ int main(void)
 		pause();
 	return 0;
 }
-
-// int write_client_PID(int client_PID)
-// {
-// 	signal(SIGUSR1, sigusr1);
-// 	signal(SIGUSR2, sigusr2);
-// 	while (1)
-// 		pause();
-// }
-
-// int main(void)
-// {
-// 	write_PID();
-
-// }
