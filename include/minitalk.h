@@ -11,14 +11,16 @@ void	write_PID();
 int		miniatoi(char* str);
 int		send_char (char c, int pid);
 int		send_int (int i, int pid);
-void	write_0(int *c);
-void	write_1(int *c);
+void	write_0(char *c);
+void	write_1(char *c);
 
 typedef struct s_message
 {
-	int		client_PID;
-	int		len;
+	char	client_PID[4];
+	char	len[4];
 	char	*text;
+	char	char_holder;
+	int		bit_counter;
 }	t_message;
 
 # define INT_BIT_TEST 2147483648
