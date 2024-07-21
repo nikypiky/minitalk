@@ -42,7 +42,7 @@ int send_char (char c, int pid)
 			kill(pid, SIGUSR2);
 		j++;
 		bit_test = bit_test >> 1;
-		sleep(1);
+		usleep(1);
 	}
 	return (0);
 }
@@ -63,7 +63,7 @@ int send_int (int i, int pid)
 			kill(pid, SIGUSR2);
 		j++;
 		bit_test = bit_test >> 1;
-		sleep(0.1);
+		usleep(1);
 	}
 	return (0);
 }
