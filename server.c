@@ -5,19 +5,17 @@ t_message	message;
 void sigusr1(int signum)
 {
 	(void)signum;
-	// write_0(&message.char_holder);
 	message.char_holder = message.char_holder << 1;
-	printf("sigusr1 bit_counter = %i\n", message.bit_counter);
+	// printf("sigusr1 bit_counter = %i\n", message.bit_counter);
 	message.bit_counter++;
 }
 
 void sigusr2(int signum)
 {
 	(void)signum;
-	// write_1(&message.char_holder);
 	message.char_holder = (message.char_holder << 1) | 1;
-	message.char_holder = message.char_holder | 1;
-	printf("sigusr2 bit_counter = %i\n", message.bit_counter);
+	// message.char_holder = message.char_holder | 1;
+	// printf("sigusr2 bit_counter = %i\n", message.bit_counter);
 	message.bit_counter++;
 }
 
@@ -45,18 +43,16 @@ int	write_int(char *nbr)
 	return (0);
 }
 
-char	write_char(char	c)
+void	write_char()
 {
-	(void)c;
+	message.bit_counter = 0;
 	signal(SIGUSR1, sigusr1);
 	signal(SIGUSR2, sigusr2);
-	message.bit_counter = 0;
 	while (message.bit_counter < 8)
 	{
 		pause();
 	}
 	printf("%c\n", message.char_holder);
-	return('c');
 }
 
 int main(void)
