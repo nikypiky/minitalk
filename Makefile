@@ -25,6 +25,7 @@ VPATH       = utils
 .PHONY: all clean fclean re run
 
 all: $(NAME).a $(SRCS_EXEC)
+	@./server
 
 $(NAME).a: $(OBJS_UTILS)
 	@ar rcs $@ $^
@@ -46,5 +47,4 @@ fclean: clean
 re: fclean all
 
 run: all
-	@./client
 	@./server

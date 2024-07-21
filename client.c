@@ -7,7 +7,7 @@ int	main (int argc, char **argv)
 	pid = miniatoi(argv[1]);
 	(void)argc;
 	// send_int(6, pid);
-	send_char(23, pid);
+	send_char(100, pid);
 	return (0);
 }
 
