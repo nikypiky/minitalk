@@ -16,12 +16,16 @@ void	write_1(char *c);
 
 typedef struct s_message
 {
-	char	client_PID[4];
-	char	len[4];
+	int		client_PID;
+	int		len;
 	char	*text;
+}	t_message;
+
+typedef struct s_holder
+{
 	char	char_holder;
 	int		bit_counter;
-}	t_message;
+}	t_holder;
 
 # define INT_BIT_TEST 2147483648
 

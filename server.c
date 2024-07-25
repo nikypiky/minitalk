@@ -1,19 +1,19 @@
 #include "include/minitalk.h"
 
-t_message	message;
+t_holder	holder;
 
 void sigusr1(int signum)
 {
 	(void)signum;
-	message.char_holder = message.char_holder << 1;
-	message.bit_counter++;
+	holder.char_holder = holder.char_holder << 1;
+	holder.bit_counter++;
 }
 
 void sigusr2(int signum)
 {
 	(void)signum;
-	message.char_holder = (message.char_holder << 1) | 1;
-	message.bit_counter++;
+	holder.char_holder = (holder.char_holder << 1) | 1;
+	holder.bit_counter++;
 }
 
 int	write_int()
@@ -26,12 +26,12 @@ int	write_int()
 	signal(SIGUSR2, sigusr2);
 	while (i >= 0)
 	{
-		message.bit_counter = 0;
-		while (message.bit_counter < 8)
+		holder.bit_counter = 0;
+		while (holder.bit_counter < 8)
 		{
 			pause();
 		}
-		nbr[i] = message.char_holder;
+		nbr[i] = holder.char_holder;
 		i--;
 	}
 	return (*((int *)nbr));
@@ -39,40 +39,26 @@ int	write_int()
 
 void	write_char()
 {
-	message.bit_counter = 0;
+	holder.bit_counter = 0;
 	signal(SIGUSR1, sigusr1);
 	signal(SIGUSR2, sigusr2);
-	while (message.bit_counter < 8)
+	while (holder.bit_counter < 8)
 	{
 		pause();
 	}
 }
 
-// int	write_int()
-// {
-// 	int		i;
-// 	char	nbr[4];
-// 	int		*ptr;
-
-// 	i = 4;
-// 	while (i > 0)
-// 	{
-// 		write_char();
-// 		nbr[i] = message.char_holder;
-// 		printf("char_holder = %i\n", i);
-// 		i--;
-// 	}
-// 	ptr = (int *)nbr;
-// 	printf("nbr = %i\n", *ptr);
-// 	return(*ptr);
-// }
-
 int main(void)
 {
+	t_message	message;
 	write_PID();
 
 	// write_char('c');
-	int i =  write_int(message.len);
-	printf("i = %i\n", i);
+	message.client_PID = write_int();
+	message.len = write_int();
+	message.text = malloc(sizeof(char) * message.len);
+	if(!message.text)
+		return (1);
+	printf("pid = %i\nlen = %i", message.client_PID, message.len);
 	return 0;
 }
