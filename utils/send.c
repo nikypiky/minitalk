@@ -41,3 +41,13 @@ int send_int (int i, int pid)
 	}
 	return (0);
 }
+
+int	send_str (char *str, int pid)
+{
+	while (*str)
+	{
+		send_char(*str, pid);
+		str++;
+	}
+	return (0);
+}

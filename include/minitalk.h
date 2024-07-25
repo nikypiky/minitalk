@@ -13,6 +13,9 @@ int		send_char (char c, int pid);
 int		send_int (int i, int pid);
 void	write_0(char *c);
 void	write_1(char *c);
+size_t	ft_strlen(const char *c);
+int		send_str (char *str, int pid);
+
 
 typedef struct s_message
 {

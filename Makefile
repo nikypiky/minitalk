@@ -3,7 +3,8 @@ NAME = libminitalk
 SRCS_UTILS :=	write_PID \
 				miniatoi \
 				send \
-				write
+				write \
+				ft_strlen
 
 SRCS_EXEC  :=	client \
 				server \

@@ -37,7 +37,7 @@ int	write_int()
 	return (*((int *)nbr));
 }
 
-void	write_char()
+char	write_char()
 {
 	holder.bit_counter = 0;
 	signal(SIGUSR1, sigusr1);
@@ -46,19 +46,26 @@ void	write_char()
 	{
 		pause();
 	}
+	return (holder.char_holder);
 }
 
 int main(void)
 {
 	t_message	message;
-	write_PID();
+	int			i;
 
-	// write_char('c');
+	i = 0;
+	write_PID();
 	message.client_PID = write_int();
 	message.len = write_int();
 	message.text = malloc(sizeof(char) * message.len);
 	if(!message.text)
 		return (1);
-	printf("pid = %i\nlen = %i", message.client_PID, message.len);
+	while (message.text[i])
+	{
+		message.text[i] = write_char();
+		i++;
+	}
+	printf("pid = %i\nlen = %i\ntext = %s\n", message.client_PID, message.len, message.text);
 	return 0;
 }
