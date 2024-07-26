@@ -9,16 +9,18 @@ void	wait_4_signal(int signum)
 int	main (int argc, char **argv)
 {
 	int		pid;
-	char string[] = "hello world";
+	char string[] = "hello worldd";
 
 	pid = miniatoi(argv[1]);
-	// signal(SIGUSR1, wait_4_signal);
+	signal(SIGUSR1, wait_4_signal);
 	(void)argc;
+	printf("pid real = %i\n", getpid());
 	send_int(getpid(), pid);
-	/* pause(); */
+	// pause();
 	send_int(ft_strlen(string), pid);
-	/* pause(); */
-	/* send_str(string, pid); */
+	printf("strlen = %li\n", ft_strlen(string));
+	// // pause();
+	// send_str(string, pid);
 	return (0);
 }
 

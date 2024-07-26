@@ -57,8 +57,10 @@ int main(void)
 	// i = 0;
 	write_PID();
 	message.client_PID = write_int();
+	// kill(message.client_PID, SIGUSR1);
 	printf("pid = %i\n", message.client_PID);
 	message.len = write_int();
+	// kill(message.client_PID, SIGUSR1);
 	printf("len = %i\n", message.len);
 	// message.text = malloc(sizeof(char) * message.len);
 	// if(!message.text)
@@ -66,7 +68,8 @@ int main(void)
 	// kill(message.client_PID, SIGUSR1);
 	// while (i != message.len)
 	// {
-	// 	message.text[i] = write_char();
+	// 	// message.text[i] = write_char();
+	// 	printf("%c", write_char());
 	// 	i++;
 	// }
 	// printf("text = %s\n", message.text);
