@@ -1,4 +1,5 @@
 #include "../include/minitalk.h"
+#include <stdio.h>
 
 int send_char (char c, int pid)
 {
@@ -47,6 +48,7 @@ int	send_str (char *str, int pid)
 	while (*str)
 	{
 		send_char(*str, pid);
+		printf("*str = %c\n", *str);
 		str++;
 	}
 	return (0);

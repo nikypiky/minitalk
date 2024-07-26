@@ -52,20 +52,23 @@ char	write_char()
 int main(void)
 {
 	t_message	message;
-	int			i;
+	// int			i;
 
-	i = 0;
+	// i = 0;
 	write_PID();
 	message.client_PID = write_int();
+	printf("pid = %i\n", message.client_PID);
 	message.len = write_int();
-	message.text = malloc(sizeof(char) * message.len);
-	if(!message.text)
-		return (1);
-	while (message.text[i])
-	{
-		message.text[i] = write_char();
-		i++;
-	}
-	printf("pid = %i\nlen = %i\ntext = %s\n", message.client_PID, message.len, message.text);
+	printf("len = %i\n", message.len);
+	// message.text = malloc(sizeof(char) * message.len);
+	// if(!message.text)
+	// 	return (1);
+	// kill(message.client_PID, SIGUSR1);
+	// while (i != message.len)
+	// {
+	// 	message.text[i] = write_char();
+	// 	i++;
+	// }
+	// printf("text = %s\n", message.text);
 	return 0;
 }
