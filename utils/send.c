@@ -24,12 +24,12 @@ int send_char (char c, int pid)
 
 int send_int (int i, int pid)
 {
+	printf("starting to send int %i\n", i);
 	unsigned int	bit_test;
 	int				j;
 
 	bit_test = 2147483648;
 	j = 0;
-
 	while (j < 32)
 	{
 		if ((i & bit_test) == 0)
@@ -40,6 +40,7 @@ int send_int (int i, int pid)
 		bit_test = bit_test >> 1;
 		usleep(10);
 	}
+	printf("int %i sent\n", i);
 	return (0);
 }
 
