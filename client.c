@@ -10,7 +10,7 @@ void	wait_4_signal(int signum)
 int	main (int argc, char **argv)
 {
 	int		pid;
-	char string[] = "hello world";
+	char string[] = "Lorem ipsum dolor sit ";
 
 	pid = miniatoi(argv[1]);
 	// signal(SIGUSR1, wait_4_signal);

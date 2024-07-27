@@ -87,11 +87,10 @@ int main(void)
 	while (i != message.len)
 	{
 		message.text[i] = write_char();
-		// sleep(1);
-		// printf("char_holder = %c %c\n", holder.char_holder, holder.char_holder);
+		printf("%c", message.text[i]);
 		i++;
 	}
-	printf("text = %s\n", message.text);
+	printf("\ntext = %s\n", message.text);
 	return 0;
 }
 
