@@ -54,8 +54,6 @@ void	write_str(char *str, int len)
 	int	i;
 
 	i = 0;
-	// if(!str)
-	// 	return ();
 	while (i != len)
 	{
 		holder.bit_counter = 0;
@@ -65,6 +63,9 @@ void	write_str(char *str, int len)
 		{
 			pause();
 		}
+		printf("char_holder = %i %c\n", holder.char_holder, holder.char_holder);
+		str[i] = holder.char_holder;
+		i++;
 	}
 	printf("text = %s\n", str);
 }
@@ -81,7 +82,25 @@ int main(void)
 	message.text = malloc(sizeof(char) * message.len);
 	if (!message.len)
 		return (1);
-	write_str(message.text, message.len);
+	// write_str(message.text, message.len);
+		int	i;
+
+	i = 0;
+	while (i != message.len)
+	{
+		// holder.bit_counter = 0;
+		// signal(SIGUSR1, sigusr1);
+		// signal(SIGUSR2, sigusr2);
+		// while (holder.bit_counter < 8)
+		// {
+		// 	pause();
+		// }
+		message.text[i] = write_char();
+		printf("char_holder = %i %c\n", holder.char_holder, holder.char_holder);
+		// message.text[i] = holder.char_holder;
+		i++;
+	}
+	printf("text = %s\n", message.text);
 	return 0;
 }
 
