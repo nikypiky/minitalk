@@ -73,7 +73,9 @@ void	write_str(char *str, int len)
 int main(void)
 {
 	t_message	message;
+	int	i;
 
+	i = 0;
 	write_PID();
 	message.client_PID = write_int();
 	printf("pid = %i\n", message.client_PID);
@@ -82,22 +84,11 @@ int main(void)
 	message.text = malloc(sizeof(char) * message.len);
 	if (!message.len)
 		return (1);
-	// write_str(message.text, message.len);
-		int	i;
-
-	i = 0;
 	while (i != message.len)
 	{
-		// holder.bit_counter = 0;
-		// signal(SIGUSR1, sigusr1);
-		// signal(SIGUSR2, sigusr2);
-		// while (holder.bit_counter < 8)
-		// {
-		// 	pause();
-		// }
 		message.text[i] = write_char();
-		printf("char_holder = %i %c\n", holder.char_holder, holder.char_holder);
-		// message.text[i] = holder.char_holder;
+		// sleep(1);
+		// printf("char_holder = %c %c\n", holder.char_holder, holder.char_holder);
 		i++;
 	}
 	printf("text = %s\n", message.text);
