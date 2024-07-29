@@ -49,7 +49,9 @@ int	send_str (char *str, int pid)
 	while (*str)
 	{
 		send_char(*str, pid);
+		printf("%c", *str);
 		str++;
+		// sleep(1);
 	}
 	return (0);
 }

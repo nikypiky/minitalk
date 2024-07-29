@@ -70,29 +70,47 @@ void	write_str(char *str, int len)
 	printf("text = %s\n", str);
 }
 
-int main(void)
+// int main(void)
+// {
+// 	t_message	message;
+// 	int	i;
+
+// 	i = 0;
+// 	write_PID();
+// 	message.client_PID = write_int();
+// 	printf("pid = %i\n", message.client_PID);
+// 	message.len = write_int();
+// 	printf("len = %i\n", message.len);
+// 	message.text = malloc(sizeof(char) * message.len);
+// 	if (!message.len)
+// 		return (1);
+// 	while (i != message.len)
+// 	{
+// 		message.text[i] = write_char();
+// 		i++;
+// 	}
+// 	printf("text = %s\n", message.text);
+// 	return 0;
+// }
+
+int	main(void)
 {
-	t_message	message;
-	int	i;
-
-	i = 0;
+	int		i = 445;
+	int		j = 0;
+	char	*str;
 	write_PID();
-	message.client_PID = write_int();
-	printf("pid = %i\n", message.client_PID);
-	message.len = write_int();
-	printf("len = %i\n", message.len);
-	message.text = malloc(sizeof(char) * message.len);
-	if (!message.len)
-		return (1);
-	while (i != message.len)
-	{
-		message.text[i] = write_char();
-		i++;
-	}
-	printf("text = %s\n", message.text);
-	return 0;
-}
 
+	str = malloc(sizeof(char) * i);
+	str[i] = 0;
+	while (j != i)
+	{
+		str[j] = write_char();
+		printf("%c", str[j]);
+		j++;
+	}
+	printf("\ntext = %s\n", str);
+	free(str);
+}
 
 
 
